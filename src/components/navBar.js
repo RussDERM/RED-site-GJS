@@ -3,6 +3,9 @@ import { Link } from "gatsby"
 
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap"
 
+// * User imports
+import Icon from "./icon"
+
 const CustomNavbar = ({ pageInfo }) => {
   console.log(pageInfo)
   return (
@@ -10,7 +13,9 @@ const CustomNavbar = ({ pageInfo }) => {
       <Navbar variant="dark" expand="lg" id="site-navbar">
         {/* <Container> */}
         <Link to="/" className="link-no-style">
-          <Navbar.Brand as="span">Gatsby React Bootstrap</Navbar.Brand>
+          <Navbar.Brand as="span">
+            <Icon />
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

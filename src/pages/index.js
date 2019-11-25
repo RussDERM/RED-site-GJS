@@ -1,15 +1,34 @@
 import React from "react"
 import { Row, Col, Container, ListGroup } from "react-bootstrap"
-
-import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+import Layout from "../components/layout"
 
-const IndexPage = () => (
+// ? Get images
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "images/REDfavicon.png" }) {
+      childImageSharp {
+        fixed(width: 50, height: 50) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => (
   <Layout pageInfo={{ pageName: "index" }}>
     <SEO title="Home" keywords={[`gatsby`, `react`, `bootstrap`]} />
     <Container className="text-center">
       <Row>
         <Col>
+          <Img
+            className="REDfavicon"
+            fixed={data.file.childImageSharp.fixed}
+            alt=""
+          />
           <p>
             This is a Gatsby Starter that I frequently use to get jump started
             on quick website builds. It includes the following packages:
